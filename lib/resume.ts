@@ -78,8 +78,8 @@ export const roles: readonly Role[] = [
   {
     id: "ogon",
     company: "Ogon.Team",
-    href: "https://go.ogon.team",
-    hrefLabel: "go.ogon.team",
+    href: "https://ogon.team",
+    hrefLabel: "ogon.team",
     title: "Front-end Developer",
     dates: "Jun 2025 — Oct 2026",
     place: "Full-time, remote",
