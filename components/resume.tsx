@@ -1,13 +1,13 @@
 import { PortraitGallery } from "@/components/portrait-gallery";
 import { SectionNav } from "@/components/section-nav";
 import {
-  courses,
-  education,
-  languages,
-  profile,
-  roles,
-  skillGroups,
-  type Project,
+    courses,
+    education,
+    languages,
+    profile,
+    roles,
+    skillGroups,
+    type Project,
 } from "@/lib/resume";
 
 const personJsonLd = {
@@ -17,7 +17,7 @@ const personJsonLd = {
   jobTitle: profile.title,
   email: profile.email,
   telephone: "+375447151103",
-  image: "/portraits/studio.jpg",
+  image: "/portraits/beach.png",
   sameAs: [profile.githubHref, profile.telegramHref],
   knowsLanguage: ["en", "ru", "be"],
 };
