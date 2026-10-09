@@ -81,7 +81,7 @@ export const roles: readonly Role[] = [
     href: "https://go.ogon.team",
     hrefLabel: "go.ogon.team",
     title: "Front-end Developer",
-    dates: "Jun 2025 — Present",
+    dates: "Jun 2025 — Oct 2026",
     place: "Full-time, remote",
     current: true,
     points: [
@@ -122,7 +122,7 @@ export const roles: readonly Role[] = [
     href: "https://tonraffles.app",
     hrefLabel: "tonraffles.app",
     title: "Front-end Developer",
-    dates: "Apr 2025 — Present",
+    dates: "Apr 2025 — May 2026",
     place: "Part-time, remote",
     current: true,
     points: [
@@ -223,7 +223,7 @@ export const education = {
     "Belarusian State University of Informatics and Radioelectronics, Minsk Radio Engineering College (BSUIR MRC)",
   credential:
     "Diploma of vocational education in electronic computer equipment",
-  dates: "Sep 2019 — Present",
+  dates: "Sep 2019 — Feb 2022",
   place: "Minsk, Belarus",
   subjects: [
     "Microcontroller programming",

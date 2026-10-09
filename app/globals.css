@@ -1,13 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f0e8;
+  --background: #f6f0e6;
   --foreground: #1c1916;
   --muted: #5c564c;
   --faint: #645e54;
-  --line: #ddd4c6;
-  --accent: #9a3412;
-  --surface: #faf7f2;
+  --line: #e3d5c4;
+  --accent: #be123c;
+  --surface: #fffaf4;
+  --coral: #be123c;
+  --amber: #c2410c;
+  --teal: #0f766e;
+  --indigo: #4338ca;
+  --green: #166534;
+  --fill-coral: #be123c;
+  --fill-amber: #c2410c;
+  --fill-teal: #0f766e;
+  --fill-indigo: #4338ca;
+  --fill-green: #15803d;
+  --on-fill: #fffaf4;
   color-scheme: light;
 }
 
@@ -19,6 +30,17 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-surface: var(--surface);
+  --color-coral: var(--coral);
+  --color-amber: var(--amber);
+  --color-teal: var(--teal);
+  --color-indigo: var(--indigo);
+  --color-green: var(--green);
+  --color-fill-coral: var(--fill-coral);
+  --color-fill-amber: var(--fill-amber);
+  --color-fill-teal: var(--fill-teal);
+  --color-fill-indigo: var(--fill-indigo);
+  --color-fill-green: var(--fill-green);
+  --color-on-fill: var(--on-fill);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-serif: var(--font-instrument), "Iowan Old Style", Palatino, Georgia, serif;
@@ -26,13 +48,24 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #12110e;
-    --foreground: #f3efe6;
-    --muted: #c2baae;
-    --faint: #8f877c;
-    --line: #2e2a24;
-    --accent: #e8a87c;
-    --surface: #1b1916;
+    --background: #14120f;
+    --foreground: #f6f1e8;
+    --muted: #c8bfb2;
+    --faint: #a3988b;
+    --line: #332e28;
+    --accent: #fda4af;
+    --surface: #1d1a16;
+    --coral: #fda4af;
+    --amber: #fdba74;
+    --teal: #5eead4;
+    --indigo: #c4b5fd;
+    --green: #86efac;
+    --fill-coral: #e11d48;
+    --fill-amber: #c2410c;
+    --fill-teal: #0f766e;
+    --fill-indigo: #4f46e5;
+    --fill-green: #15803d;
+    --on-fill: #fffaf4;
     color-scheme: dark;
   }
 }
@@ -41,25 +74,73 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes portrait-in {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.portrait-frame {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.portrait-gallery:has(#portrait-studio:checked) .portrait-frame-portrait-studio,
+.portrait-gallery:has(#portrait-profile:checked) .portrait-frame-portrait-profile,
+.portrait-gallery:has(#portrait-smile:checked) .portrait-frame-portrait-smile,
+.portrait-gallery:has(#portrait-outdoor:checked) .portrait-frame-portrait-outdoor {
+  opacity: 1;
+  animation: portrait-in 280ms ease;
+}
+
+.portrait-gallery:has(#portrait-studio:checked) .portrait-thumb-portrait-studio,
+.portrait-gallery:has(#portrait-profile:checked) .portrait-thumb-portrait-profile,
+.portrait-gallery:has(#portrait-smile:checked) .portrait-thumb-portrait-smile,
+.portrait-gallery:has(#portrait-outdoor:checked) .portrait-thumb-portrait-outdoor {
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--fill-coral);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+
+  .portrait-frame {
+    animation: none;
+  }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 46rem 24rem at -8% -10%, color-mix(in oklab, var(--fill-coral) 22%, transparent), transparent 70%),
+    radial-gradient(ellipse 40rem 22rem at 110% 0%, color-mix(in oklab, var(--fill-teal) 20%, transparent), transparent 68%),
+    radial-gradient(ellipse 36rem 22rem at 80% 100%, color-mix(in oklab, var(--fill-indigo) 16%, transparent), transparent 70%);
+  background-attachment: fixed;
   color: var(--foreground);
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--background);
+  background: var(--fill-coral);
+  color: var(--on-fill);
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--fill-coral);
   outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .portrait-frame {
+    animation: none;
+  }
 }
 
 @media print {
@@ -71,6 +152,11 @@ body {
     --line: #cccccc;
     --accent: #9a3412;
     --surface: #ffffff;
+    --coral: #9a3412;
+    --amber: #9a3412;
+    --teal: #115e59;
+    --indigo: #312e81;
+    --green: #14532d;
     color-scheme: light;
   }
 
