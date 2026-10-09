@@ -88,16 +88,16 @@ html {
   pointer-events: none;
 }
 
-.portrait-gallery:has(#portrait-studio:checked) .portrait-frame-portrait-studio,
-.portrait-gallery:has(#portrait-profile:checked) .portrait-frame-portrait-profile,
+.portrait-gallery:has(#portrait-beach:checked) .portrait-frame-portrait-beach,
+.portrait-gallery:has(#portrait-cafe:checked) .portrait-frame-portrait-cafe,
 .portrait-gallery:has(#portrait-smile:checked) .portrait-frame-portrait-smile,
 .portrait-gallery:has(#portrait-outdoor:checked) .portrait-frame-portrait-outdoor {
   opacity: 1;
   animation: portrait-in 280ms ease;
 }
 
-.portrait-gallery:has(#portrait-studio:checked) .portrait-thumb-portrait-studio,
-.portrait-gallery:has(#portrait-profile:checked) .portrait-thumb-portrait-profile,
+.portrait-gallery:has(#portrait-beach:checked) .portrait-thumb-portrait-beach,
+.portrait-gallery:has(#portrait-cafe:checked) .portrait-thumb-portrait-cafe,
 .portrait-gallery:has(#portrait-smile:checked) .portrait-thumb-portrait-smile,
 .portrait-gallery:has(#portrait-outdoor:checked) .portrait-thumb-portrait-outdoor {
   box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--fill-coral);
