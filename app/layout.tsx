@@ -25,7 +25,7 @@ const title = "Matsvei Dubaleka — Front-end Engineer";
 const description =
   "Front-end engineer building React and Next.js products: community platforms, Web3 tools on TON, and full-stack web apps.";
 
-const portraits = [
+const PORTRAITS = [
   {
     url: "/portraits/smile.jpg",
     width: 682,
@@ -75,13 +75,13 @@ export const metadata: Metadata = {
     type: "profile",
     firstName: "Matsvei",
     lastName: "Dubaleka",
-    images: [...portraits],
+    images: [...PORTRAITS],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: portraits.map((photo) => photo.url),
+    images: PORTRAITS.map((photo) => photo.url),
   },
 };
 
