@@ -1,8 +1,21 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Instrument_Serif,
+  Playfair_Display,
+} from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const playfairDisplayHeading = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -68,7 +81,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
   description,
-  authors: [{ name: "Matsvei Dubaleka", url: "https://github.com/MatsveiDubaleka" }],
+  authors: [
+    { name: "Matsvei Dubaleka", url: "https://github.com/MatsveiDubaleka" },
+  ],
   openGraph: {
     title,
     description,
@@ -89,7 +104,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        instrumentSerif.variable,
+        "font-sans",
+        geist.variable,
+        playfairDisplayHeading.variable,
+      )}
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         {children}
