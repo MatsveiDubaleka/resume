@@ -71,12 +71,14 @@ function CVPage() {
         <Button
           onClick={() => setPageNumber(pageNumber - 1)}
           disabled={pageNumber <= 1}
+          className={"cursor-pointer"}
         >
           Previous
         </Button>
         <Button
           onClick={() => setPageNumber(pageNumber + 1)}
           disabled={pageNumber >= (numPages ?? 0)}
+          className={"cursor-pointer"}
         >
           Next
         </Button>
