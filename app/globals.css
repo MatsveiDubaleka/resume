@@ -10,7 +10,7 @@
   --muted: #5c564c;
   --faint: #645e54;
   --line: #e3d5c4;
-  --accent: #be123c;
+  --accent: oklch(0.97 0 0);
   --surface: #fffaf4;
   --coral: #be123c;
   --amber: #c2410c;

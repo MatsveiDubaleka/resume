@@ -5,8 +5,7 @@ import {
   Geist,
   Geist_Mono,
   Instrument_Serif,
-  Playfair_Display,
-} from "next/font/google";
+  Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -15,7 +14,7 @@ const playfairDisplayHeading = Playfair_Display({
   variable: "--font-heading",
 });
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -111,7 +110,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         geistMono.variable,
         instrumentSerif.variable,
         "font-sans",
-        geist.variable,
+        inter.variable,
         playfairDisplayHeading.variable,
       )}
     >

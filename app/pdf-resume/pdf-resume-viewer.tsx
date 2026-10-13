@@ -20,7 +20,7 @@ export default function PdfResumeViewer() {
   return (
     <div className="relative h-full w-full bg-black">
       <Link href="/" prefetch>
-        <Button variant={"secondary"} className={" m-2"}>
+        <Button variant={"outline"} className={" m-2"}>
           Back to Home
         </Button>
       </Link>
