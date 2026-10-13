@@ -1,14 +1,16 @@
 import { PortraitGallery } from "@/components/portrait-gallery";
 import { SectionNav } from "@/components/section-nav";
 import {
-    courses,
-    education,
-    languages,
-    profile,
-    roles,
-    skillGroups,
-    type Project,
+  courses,
+  education,
+  languages,
+  profile,
+  roles,
+  skillGroups,
+  type Project,
 } from "@/lib/resume";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -55,7 +57,9 @@ export function Resume() {
             <h1 className="mt-3 font-serif text-5xl leading-none tracking-tight text-balance sm:text-6xl">
               {profile.name}
             </h1>
-            <p className="mt-5 max-w-prose text-base leading-relaxed text-muted">{profile.summary}</p>
+            <p className="mt-5 max-w-prose text-base leading-relaxed text-muted">
+              {profile.summary}
+            </p>
             <address id="contact" className="mt-6 text-sm not-italic">
               <ul className="grid max-w-xl gap-x-8 gap-y-1.5 sm:grid-cols-2">
                 <ContactRow label="Phone" href={profile.phoneHref}>
@@ -67,18 +71,32 @@ export function Resume() {
                 <ContactRow label="GitHub" href={profile.githubHref} external>
                   {profile.github}
                 </ContactRow>
-                <ContactRow label="Telegram" href={profile.telegramHref} external>
+                <ContactRow
+                  label="Telegram"
+                  href={profile.telegramHref}
+                  external
+                >
                   {profile.telegram}
                 </ContactRow>
               </ul>
             </address>
+            <Link href="/pdf-resume" prefetch>
+              <Button className="mt-4" variant={"outline"}>
+                PDF CV Resume
+              </Button>
+            </Link>
           </div>
         </header>
 
         <SectionNav />
 
         <main id="content">
-          <Section id="experience" index="01" title="Experience" tone="text-coral">
+          <Section
+            id="experience"
+            index="01"
+            title="Experience"
+            tone="text-coral"
+          >
             <div className="space-y-5">
               {roles.map((role) => {
                 const tone = roleStyles[role.id] ?? roleStyles.ogon;
@@ -88,7 +106,9 @@ export function Resume() {
                     id={role.id}
                     className={`scroll-mt-24 rounded-2xl border border-line bg-surface/80 p-5 shadow-sm transition motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md ${tone.hover}`}
                   >
-                    <div className={`mb-4 h-1.5 w-14 rounded-full ${tone.bar}`} />
+                    <div
+                      className={`mb-4 h-1.5 w-14 rounded-full ${tone.bar}`}
+                    />
                     <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                       <h3 className="font-serif text-2xl tracking-tight">
                         {role.href ? (
@@ -104,7 +124,9 @@ export function Resume() {
                           role.company
                         )}
                       </h3>
-                      <p className="font-mono text-xs tracking-wide text-faint">{role.dates}</p>
+                      <p className="font-mono text-xs tracking-wide text-faint">
+                        {role.dates}
+                      </p>
                     </div>
                     <p className="mt-1 text-sm text-muted">
                       {role.title}
@@ -138,7 +160,11 @@ export function Resume() {
                         </p>
                         <div className="mt-3 grid gap-3 sm:grid-cols-2">
                           {role.projects.map((project) => (
-                            <ProjectBlock key={project.name} project={project} marker={tone.bar} />
+                            <ProjectBlock
+                              key={project.name}
+                              project={project}
+                              marker={tone.bar}
+                            />
                           ))}
                         </div>
                       </div>
@@ -178,7 +204,9 @@ export function Resume() {
                       className={`inline-block rounded-full px-2.5 py-1 text-sm ring-1 ${chipStyles[index % chipStyles.length]}`}
                     >
                       {language.name}
-                      {"level" in language ? <span className="text-muted"> · {language.level}</span> : null}
+                      {"level" in language ? (
+                        <span className="text-muted"> · {language.level}</span>
+                      ) : null}
                     </span>
                   ))}
                 </dd>
@@ -186,14 +214,25 @@ export function Resume() {
             </dl>
           </Section>
 
-          <Section id="education" index="03" title="Education" tone="text-indigo">
+          <Section
+            id="education"
+            index="03"
+            title="Education"
+            tone="text-indigo"
+          >
             <article className="rounded-2xl border border-line bg-surface/80 p-5 shadow-sm transition motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-indigo/40 motion-safe:hover:shadow-md">
               <div className="mb-4 h-1.5 w-14 rounded-full bg-fill-indigo" />
               <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                <h3 className="font-serif text-2xl tracking-tight">BSUIR MRC</h3>
-                <p className="shrink-0 font-mono text-xs tracking-wide text-faint">{education.dates}</p>
+                <h3 className="font-serif text-2xl tracking-tight">
+                  BSUIR MRC
+                </h3>
+                <p className="shrink-0 font-mono text-xs tracking-wide text-faint">
+                  {education.dates}
+                </p>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{education.school}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                {education.school}
+              </p>
               <p className="mt-2 text-[0.95rem]">{education.credential}</p>
               <p className="mt-1 text-sm text-muted">{education.place}</p>
               <ul className="mt-4 flex flex-wrap gap-2">
@@ -208,10 +247,16 @@ export function Resume() {
                 ))}
               </ul>
               <div className="mt-5">
-                <p className="font-mono text-[0.65rem] tracking-[0.16em] text-faint uppercase">Projects</p>
+                <p className="font-mono text-[0.65rem] tracking-[0.16em] text-faint uppercase">
+                  Projects
+                </p>
                 <div className="mt-3 grid gap-3">
                   {education.projects.map((project) => (
-                    <ProjectBlock key={project.name} project={project} marker="bg-fill-indigo" />
+                    <ProjectBlock
+                      key={project.name}
+                      project={project}
+                      marker="bg-fill-indigo"
+                    />
                   ))}
                 </div>
               </div>
@@ -238,10 +283,15 @@ export function Resume() {
                         {course.name}
                       </a>
                       {"organization" in course ? (
-                        <span className="text-muted"> · {course.organization}</span>
+                        <span className="text-muted">
+                          {" "}
+                          · {course.organization}
+                        </span>
                       ) : null}
                     </h3>
-                    <p className="font-mono text-xs tracking-wide text-faint">{course.dates}</p>
+                    <p className="font-mono text-xs tracking-wide text-faint">
+                      {course.dates}
+                    </p>
                   </div>
                   <p className="mt-1 text-sm text-muted">
                     {course.place}
@@ -256,7 +306,11 @@ export function Resume() {
                       </p>
                       <div className="mt-3 grid gap-3 sm:grid-cols-2">
                         {course.projects.map((project) => (
-                          <ProjectBlock key={project.name} project={project} marker="bg-fill-amber" />
+                          <ProjectBlock
+                            key={project.name}
+                            project={project}
+                            marker="bg-fill-amber"
+                          />
                         ))}
                       </div>
                     </div>
@@ -274,10 +328,22 @@ export function Resume() {
             {profile.title}
           </p>
           <p className="flex gap-3" aria-hidden="true">
-            <span className="size-2 rounded-full bg-fill-coral" aria-hidden="true" />
-            <span className="size-2 rounded-full bg-fill-amber" aria-hidden="true" />
-            <span className="size-2 rounded-full bg-fill-teal" aria-hidden="true" />
-            <span className="size-2 rounded-full bg-fill-indigo" aria-hidden="true" />
+            <span
+              className="size-2 rounded-full bg-fill-coral"
+              aria-hidden="true"
+            />
+            <span
+              className="size-2 rounded-full bg-fill-amber"
+              aria-hidden="true"
+            />
+            <span
+              className="size-2 rounded-full bg-fill-teal"
+              aria-hidden="true"
+            />
+            <span
+              className="size-2 rounded-full bg-fill-indigo"
+              aria-hidden="true"
+            />
           </p>
         </footer>
       </div>
@@ -328,7 +394,11 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} aria-labelledby={`${id}-heading`} className="mt-14 scroll-mt-24">
+    <section
+      id={id}
+      aria-labelledby={`${id}-heading`}
+      className="mt-14 scroll-mt-24"
+    >
       <h2
         id={`${id}-heading`}
         className="mb-5 flex items-baseline gap-3 font-mono text-[0.7rem] tracking-[0.2em] uppercase"
@@ -341,12 +411,21 @@ function Section({
   );
 }
 
-function BulletList({ items, marker }: { items: readonly string[]; marker: string }) {
+function BulletList({
+  items,
+  marker,
+}: {
+  items: readonly string[];
+  marker: string;
+}) {
   return (
     <ul className="mt-4 space-y-1.5 text-[0.95rem] leading-relaxed">
       {items.map((point) => (
         <li key={point} className="flex gap-3">
-          <span aria-hidden="true" className={`mt-[0.55rem] size-1.5 shrink-0 rounded-full ${marker}`} />
+          <span
+            aria-hidden="true"
+            className={`mt-[0.55rem] size-1.5 shrink-0 rounded-full ${marker}`}
+          />
           <span>{point}</span>
         </li>
       ))}
@@ -354,19 +433,36 @@ function BulletList({ items, marker }: { items: readonly string[]; marker: strin
   );
 }
 
-function ProjectBlock({ project, marker }: { project: Project; marker: string }) {
+function ProjectBlock({
+  project,
+  marker,
+}: {
+  project: Project;
+  marker: string;
+}) {
   return (
     <div className="rounded-xl border border-line bg-background/70 p-4 transition motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-foreground/15">
       <h4 className="flex items-center gap-2 text-[0.95rem] font-medium">
-        <span aria-hidden="true" className={`size-1.5 rounded-full ${marker}`} />
+        <span
+          aria-hidden="true"
+          className={`size-1.5 rounded-full ${marker}`}
+        />
         {project.name}
       </h4>
       {project.meta ? (
-        <p className="mt-1 font-mono text-[0.68rem] tracking-wide text-faint">{project.meta}</p>
+        <p className="mt-1 font-mono text-[0.68rem] tracking-wide text-faint">
+          {project.meta}
+        </p>
       ) : null}
-      <p className="mt-1 text-sm leading-relaxed text-muted">{project.description}</p>
-      {project.note ? <p className="mt-1 text-sm leading-relaxed">{project.note}</p> : null}
-      {project.points ? <BulletList items={project.points} marker={marker} /> : null}
+      <p className="mt-1 text-sm leading-relaxed text-muted">
+        {project.description}
+      </p>
+      {project.note ? (
+        <p className="mt-1 text-sm leading-relaxed">{project.note}</p>
+      ) : null}
+      {project.points ? (
+        <BulletList items={project.points} marker={marker} />
+      ) : null}
     </div>
   );
 }
